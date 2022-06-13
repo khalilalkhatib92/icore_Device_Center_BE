@@ -18,34 +18,34 @@ namespace iCoreAPI.Controllers
             this.repository = repository;
         }
         [HttpGet()]
-        public List<Genre> Get()
+        public ActionResult<List<Genre>> Get()
         {
             return repository.getAllGenre();
         }
         [HttpGet]
-        public Genre Get(int id)
+        public ActionResult<Genre> Get(int id)
         {
             var genre = repository.getGenreById(id);
             if(genre == null)
             {
-                //return NotFound();
+                return NotFound();
             }
             return genre;
         }
         [HttpPost]
-        public void Post()
+        public ActionResult Post()
         {
-
+            return NoContent();
         }
         [HttpPut]
-        public void put(int id)
+        public ActionResult put(int id)
         {
-
+            return NoContent();
         }
         [HttpDelete]
-        public void Delete(int id)
+        public ActionResult Delete(int id)
         {
-
+            return NoContent();
         }
     }
 }
