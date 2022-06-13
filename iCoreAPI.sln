@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iCoreAPI", "iCoreAPI\iCoreAPI.csproj", "{CBDB04ED-66FE-4AD4-8BB5-6A19555B1DED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CBDB04ED-66FE-4AD4-8BB5-6A19555B1DED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBDB04ED-66FE-4AD4-8BB5-6A19555B1DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBDB04ED-66FE-4AD4-8BB5-6A19555B1DED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBDB04ED-66FE-4AD4-8BB5-6A19555B1DED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AC2C3B65-EB22-432D-9A5E-D1A2F60874DF}
+	EndGlobalSection
+EndGlobal
