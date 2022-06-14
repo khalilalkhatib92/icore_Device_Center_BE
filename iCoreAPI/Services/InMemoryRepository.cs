@@ -18,8 +18,9 @@ namespace iCoreAPI.Services
             };
         }
 
-        public List<Genre> getAllGenre()
+        public async Task<List<Genre>> getAllGenre()
         {
+            await Task.Delay(1); // wait 1 ms and excute another action untile fishing the current task 
             return _genres;
         }
 

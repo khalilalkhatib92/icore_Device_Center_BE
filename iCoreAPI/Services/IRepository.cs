@@ -8,7 +8,7 @@ namespace iCoreAPI.Services
 {
     public interface IRepository
     {
-        List<Genre> getAllGenre();
+        Task<List<Genre>> getAllGenre();
         Genre getGenreById(int id);
     }
 }

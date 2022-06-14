@@ -17,12 +17,12 @@ namespace iCoreAPI.Controllers
         {
             this.repository = repository;
         }
-        [HttpGet()]
-        public ActionResult<List<Genre>> Get()
-        {
-            return repository.getAllGenre();
-        }
         [HttpGet]
+        public async Task<ActionResult<List<Genre>>> Get()
+        {
+            return await repository.getAllGenre();
+        }
+        [HttpGet("{id}")]
         public ActionResult<Genre> Get(int id)
         {
             var genre = repository.getGenreById(id);
