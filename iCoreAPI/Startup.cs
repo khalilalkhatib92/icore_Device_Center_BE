@@ -1,6 +1,7 @@
 using iCoreAPI.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -32,8 +34,38 @@ namespace iCoreAPI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
+            app.Use(async(context, next) => { 
+                using(var swapStream = new MemoryStream())
+                {
+                    var originalResponseBody = context.Response.Body;
+                    context.Response.Body = swapStream;
+
+                    await next.Invoke();
+
+                    swapStream.Seek(0, SeekOrigin.Begin);
+                    string RsponseBody = new StreamReader(swapStream).ReadToEnd();
+                    swapStream.Seek(0, SeekOrigin.Begin);
+
+                    await swapStream.CopyToAsync(originalResponseBody);
+                    context.Response.Body = originalResponseBody;
+
+                    logger.LogInformation(RsponseBody);
+                }
+            });
+
+            app.Map("/map1", (app) =
+                >
+
+
+            {
+                app.Run(async context =>
+                {
+                    await context.Response.WriteAsync("I'm a short-circuting in the PipLine!!!");
+                });
+            });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
