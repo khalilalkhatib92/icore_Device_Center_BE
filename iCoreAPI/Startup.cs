@@ -1,4 +1,6 @@
+using iCoreAPI.Filters;
 using iCoreAPI.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -29,8 +31,13 @@ namespace iCoreAPI
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers(options => {
+                options.Filters.Add(typeof(MyExceptionFilter));
+            });
+            services.AddResponseCaching();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();// For authentication of using endpoint api.
             services.AddSingleton<IRepository, InMemoryRepository>();
+            services.AddTransient<MyActionFilters>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,10 +62,7 @@ namespace iCoreAPI
                 }
             });
 
-            app.Map("/map1", (app) =
-                >
-
-
+            app.Map("/map1", (app) =>
             {
                 app.Run(async context =>
                 {
@@ -74,6 +78,10 @@ namespace iCoreAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseResponseCaching();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

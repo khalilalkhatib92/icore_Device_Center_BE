@@ -1,4 +1,5 @@
 ﻿using iCoreAPI.Entities;
+using iCoreAPI.Filters;
 using iCoreAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -23,6 +24,8 @@ namespace iCoreAPI.Controllers
             this.logger = logger;
         }
         [HttpGet]
+        //[ResponseCache(Duration =60)] // The data will reside/remine in cach untle 60 second.
+        [ServiceFilter(typeof(MyActionFilters))] // refere to Custome Filters
         public async Task<ActionResult<List<Genre>>> Get()
         {
             logger.LogInformation("Getting All Genres");
@@ -36,6 +39,7 @@ namespace iCoreAPI.Controllers
             if(genre == null)
             {
                 logger.LogWarning("the genre with id {id} Not Found?!!");
+                throw new ApplicationException();
                 return NotFound();
             }
             return genre;

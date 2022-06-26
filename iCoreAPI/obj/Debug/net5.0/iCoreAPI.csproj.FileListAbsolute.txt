@@ -44,3 +44,11 @@ D:\MyAngularApps\Test-GitHub\iCoreAPI\iCoreAPI\obj\Debug\net5.0\iCoreAPI.dll
 D:\MyAngularApps\Test-GitHub\iCoreAPI\iCoreAPI\obj\Debug\net5.0\ref\iCoreAPI.dll
 D:\MyAngularApps\Test-GitHub\iCoreAPI\iCoreAPI\obj\Debug\net5.0\iCoreAPI.pdb
 D:\MyAngularApps\Test-GitHub\iCoreAPI\iCoreAPI\obj\Debug\net5.0\iCoreAPI.genruntimeconfig.cache
+D:\MyAngularApps\Test-GitHub\iCoreAPI\iCoreAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\MyAngularApps\Test-GitHub\iCoreAPI\iCoreAPI\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\MyAngularApps\Test-GitHub\iCoreAPI\iCoreAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+D:\MyAngularApps\Test-GitHub\iCoreAPI\iCoreAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+D:\MyAngularApps\Test-GitHub\iCoreAPI\iCoreAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\MyAngularApps\Test-GitHub\iCoreAPI\iCoreAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+D:\MyAngularApps\Test-GitHub\iCoreAPI\iCoreAPI\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+D:\MyAngularApps\Test-GitHub\iCoreAPI\iCoreAPI\obj\Debug\net5.0\iCoreAPI.csproj.CopyComplete
