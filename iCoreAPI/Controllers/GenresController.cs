@@ -39,7 +39,7 @@ namespace iCoreAPI.Controllers
             if(genre == null)
             {
                 logger.LogWarning("the genre with id {id} Not Found?!!");
-                throw new ApplicationException();
+                //throw new ApplicationException(); // Custom Application Exception
                 return NotFound();
             }
             return genre;
