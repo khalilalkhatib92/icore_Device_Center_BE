@@ -1,8 +1,8 @@
 ﻿using iCoreAPI.Entities;
 using iCoreAPI.Filters;
-using iCoreAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -15,50 +15,45 @@ namespace iCoreAPI.Controllers
     [ApiController] // this used for validation.
     public class GenresController : ControllerBase
     {
-        private readonly IRepository repository;
         private readonly ILogger logger;
-        // Depndency Injection using Losslly Coupling.
-        public GenresController(IRepository repository, ILogger<GenresController> logger)
+        private readonly ApplicationDbContext context;
+
+        public GenresController(ILogger<GenresController> logger, ApplicationDbContext context)
         {
-            this.repository = repository;
             this.logger = logger;
+            this.context = context;
         }
+
         [HttpGet]
-        //[ResponseCache(Duration =60)] // The data will reside/remine in cach untle 60 second.
-        [ServiceFilter(typeof(MyActionFilters))] // refere to Custome Filters
         public async Task<ActionResult<List<Genre>>> Get()
         {
             logger.LogInformation("Getting All Genres");
-            return await repository.getAllGenre();
+            return await context.Genres.ToListAsync();
+            //return new List<Genre>() { new Genre() {Id=1 , Name="Computer" } }; //fro Testing
         }
         [HttpGet("{id}")]
-        public ActionResult<Genre> Get(int id, [BindRequired] string name)
+        public ActionResult<Genre> Get(int id)
         {
             logger.LogDebug("Get Action is executed ...");
-            var genre = repository.getGenreById(id);
-            if(genre == null)
-            {
-                logger.LogWarning("the genre with id {id} Not Found?!!");
-                //throw new ApplicationException(); // Custom Application Exception
-                return NotFound();
-            }
-            return genre;
+
+            throw new NotImplementedException();
         }
         [HttpPost]
-        public ActionResult Post([FromBody] Genre genre)
+        public async Task<ActionResult> Post([FromBody] Genre genre)
         {
-            repository.AddGenre(genre);
+            context.Add(genre);
+            await context.SaveChangesAsync();
             return NoContent();
         }
         [HttpPut]
         public ActionResult put([FromBody] Genre genre)
         {
-            return NoContent();
+            throw new NotImplementedException();
         }
         [HttpDelete]
         public ActionResult Delete(int id)
         {
-            return NoContent();
+            throw new NotImplementedException();
         }
     }
 }
