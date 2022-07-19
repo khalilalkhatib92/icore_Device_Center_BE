@@ -15,6 +15,7 @@ namespace iCoreAPI
         }
 
         public DbSet<Genre> Genres { get; set; } //represent the name of table in DB.
+        public DbSet<Dealer> Dealers { get; set; }
 
     }
 }

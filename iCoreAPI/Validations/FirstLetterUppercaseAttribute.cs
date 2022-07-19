@@ -18,7 +18,7 @@ namespace iCoreAPI.Validations
             if(firstLetter != firstLetter.ToUpper())
             {
                 return new ValidationResult("First Letter should be Uppercase");
-            }
+            } 
             return ValidationResult.Success;
         }
     }

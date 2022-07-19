@@ -42,6 +42,8 @@ namespace iCoreAPI
                     builder.WithOrigins(frontEndURL).AllowAnyMethod().AllowAnyHeader();
                 });
             });
+
+            services.AddAutoMapper(typeof(Startup));
             services.AddControllers(options => {
                 options.Filters.Add(typeof(MyExceptionFilter));
             });
